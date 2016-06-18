@@ -1,0 +1,11 @@
+Mystic application developement
+Requirements 
+1. Quotes from the known personalities...
+2. insipirational pictures 
+3. zen cartoons
+4. Poets from the siddhas, 
+
+Software Requirements 
+1. Android studio for compilation 
+2. Source code maintainance 
+3. 
