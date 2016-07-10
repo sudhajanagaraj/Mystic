@@ -1,12 +1,18 @@
 package com.android.mystic.ui;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.android.mystic.R;
 import com.android.mystic.adapter.CustomListAdapter;
+import com.android.mystic.application.MysticApp;
 import com.android.mystic.data.ListRowItems;
 import com.android.mystic.provider.MysticContent;
 import com.android.mystic.provider.ProviderUtility;
@@ -14,7 +20,7 @@ import com.android.mystic.provider.ProviderUtility;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MastersListActivity extends AppCompatActivity {
+public class MastersListActivity extends AppCompatActivity  {
 
     ListView listView;
     List<ListRowItems> rowItems;
@@ -27,7 +33,16 @@ public class MastersListActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.listView_Masters);
         CustomListAdapter adapter = new CustomListAdapter(this,R.layout.listview_main, getResultsMasters());
         listView.setAdapter(adapter);
+        AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position,long id) {
+                Intent intent = new Intent();
+                intent.setClass(MastersListActivity.this,FullscreenActivity.class);
+                startActivity(intent);
+            }
+        };
+        listView.setOnItemClickListener(listener);
     }
+
     List<ListRowItems> getResultsMasters() {
         rowItems = new ArrayList<ListRowItems>();
         Cursor cursor = getContentResolver().query(ProviderUtility.MASTER_URI,null,null,null,null,null);
@@ -50,4 +65,5 @@ public class MastersListActivity extends AppCompatActivity {
         }
         return rowItems;
     }
+
 }
