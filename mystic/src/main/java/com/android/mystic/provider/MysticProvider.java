@@ -3,7 +3,6 @@ package com.android.mystic.provider;
 import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
@@ -56,6 +55,7 @@ public class MysticProvider extends ContentProvider {
         long newRowId = 0;
         switch(ProviderUtility.getMatchURI(uri)) {
             case ProviderUtility.MASTER:
+            case ProviderUtility.QUOTES:
                 tableName = uri.getLastPathSegment();
                 break;
             default:
@@ -92,6 +92,7 @@ public class MysticProvider extends ContentProvider {
         Cursor queryCursor  = null;
         switch(ProviderUtility.getMatchURI(uri)) {
             case ProviderUtility.MASTER:
+            case ProviderUtility.QUOTES:
                 tableName = uri.getLastPathSegment();
                 break;
             default:

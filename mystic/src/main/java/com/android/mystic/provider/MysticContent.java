@@ -1,6 +1,5 @@
 package com.android.mystic.provider;
 
-import android.net.Uri;
 import android.provider.BaseColumns;
 
 /**
@@ -9,7 +8,9 @@ import android.provider.BaseColumns;
 public final class MysticContent {
 
     public final static String TABLE_NAME_MASTER = "Master";
+    public final static String TABLE_NAME_QUOTES = "Quotes";
 
+    public final static String BOOL_TYPE = " BOOL";
     public final static String TEXT_TYPE = " TEXT";
     public final static String DATE_TYPE = " Date";
     public final static String INTEGER_TYPE = " INTEGER";
@@ -48,11 +49,11 @@ public final class MysticContent {
         public final static String COLUMN_NAME_QUOTES_DESC = "quoteDesc";
         public final static String COLUMN_NAME_MASTER_ID = "masterId";
         public final static String COLUMN_NAME_FAVORITE = "favorite";
-        public final static String COLUMN_NAME_SHOWN = "seen";
+        public final static String COLUMN_NAME_SEEN = "seen";
 
         public final static int COLUMN_INDEX_QUOTES_DESC = 0;
         public final static int COLUMN_INDEX_MASTER_ID = 1;
         public final static int COLUMN_INDEX_FAVORITE = 2;
-        public final static int COLUMN_INDEX_SHOWN = 3;
+        public final static int COLUMN_INDEX_SEEN = 3;
     }
 }

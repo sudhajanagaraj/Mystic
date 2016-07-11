@@ -1,14 +1,11 @@
 package com.android.mystic.application;
 
-import android.content.ContentValues;
 import android.content.Intent;
-import android.content.IntentSender;
-import android.net.Uri;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -16,17 +13,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.android.mystic.R;
 import com.android.mystic.adapter.CustomListAdapter;
 import com.android.mystic.data.ListRowItems;
-import com.android.mystic.data.MysticConstants;
+import com.android.mystic.provider.DBUtility;
 import com.android.mystic.provider.MysticContent;
 import com.android.mystic.provider.ProviderUtility;
+import com.android.mystic.ui.FullscreenActivity;
 import com.android.mystic.ui.MastersListActivity;
 import com.android.mystic.ui.SettingsActivity;
-import com.android.mystic.util.Utility;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,23 +35,6 @@ public class MysticMainActivity extends AppCompatActivity
 
     ListView listView;
     List<ListRowItems> rowItems;
-
-    // Array of strings for ListView Title
-    String[] listviewTitle = new String[]{
-            "ListView Title 1", "ListView Title 2", "ListView Title 3", "ListView Title 4",
-            "ListView Title 5", "ListView Title 6", "ListView Title 7", "ListView Title 8",
-    };
-
-
-    int[] listviewImage = new int[]{
-            R.drawable.ic_launcher, R.drawable.ic_launcher, R.drawable.ic_launcher, R.drawable.ic_launcher,
-            R.drawable.ic_launcher, R.drawable.ic_launcher, R.drawable.ic_launcher, R.drawable.ic_launcher,
-    };
-
-    String[] listviewShortDescription = new String[]{
-            "Android ListView Short Description", "Android ListView Short Description", "Android ListView Short Description", "Android ListView Short Description",
-            "Android ListView Short Description", "Android ListView Short Description", "Android ListView Short Description", "Android ListView Short Description",
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,12 +49,7 @@ public class MysticMainActivity extends AppCompatActivity
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-                ContentValues cv = new ContentValues();
-                cv.put(MysticContent.Master.COLUMN_NAME_ABOUT_LIFE,"Void");
-                cv.put(MysticContent.Master.COLUMN_NAME_DISCIPLE,"iam");
-                cv.put(MysticContent.Master.COLUMN_NAME_MASTER_NAME,"youare");
-                cv.put(MysticContent.Master.COLUMN_NAME_MASTER_NAME,"youare");
-                getContentResolver().insert(ProviderUtility.MASTER_URI, cv);
+                DBUtility.insertMasterTable(MysticMainActivity.this);
             }
         });
 
@@ -85,15 +62,21 @@ public class MysticMainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        rowItems = new ArrayList<ListRowItems>();
-        for (int i = 0; i < listviewTitle.length; i++) {
-            ListRowItems item = new ListRowItems(listviewImage[i], listviewTitle[i], listviewShortDescription[i]);
-            rowItems.add(item);
-        }
+        DBUtility.insertQuotesTable(this); // Just for inserting records
+
 
         listView = (ListView) findViewById(R.id.listView_Quotes);
-        CustomListAdapter adapter = new CustomListAdapter(this,R.layout.listview_main, rowItems);
+        CustomListAdapter adapter = new CustomListAdapter(this,R.layout.listview_main, getResultsQuotes());
         listView.setAdapter(adapter);
+
+        AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position,long id) {
+                Intent intent = new Intent();
+                intent.setClass(MysticMainActivity.this,FullscreenActivity.class);
+                startActivity(intent);
+            }
+        };
+        listView.setOnItemClickListener(listener);
     }
 
     @Override
@@ -153,5 +136,29 @@ public class MysticMainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+
+    List<ListRowItems> getResultsQuotes() {
+        rowItems = new ArrayList<ListRowItems>();
+        Cursor cursor = getContentResolver().query(ProviderUtility.QUOTES_URI,null,null,null,null,null);
+        try {
+            if (cursor != null && cursor.moveToFirst()) {
+                do {
+                    //assing values
+                    String decr = cursor.getString(MysticContent.Quotes.COLUMN_INDEX_QUOTES_DESC);
+                    int id = cursor.getInt(MysticContent.Quotes.COLUMN_INDEX_MASTER_ID);
+                    ListRowItems item = new ListRowItems(R.drawable.ic_launcher,"Dummy",decr);
+                    rowItems.add(item);
+                } while (cursor.moveToNext());
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+        return rowItems;
     }
 }

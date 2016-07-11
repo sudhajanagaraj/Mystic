@@ -1,7 +1,6 @@
 package com.android.mystic.application;
 
 import android.app.Application;
-import android.content.ComponentCallbacks;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -9,7 +8,6 @@ import android.content.res.AssetManager;
 import android.content.res.Configuration;
 
 import com.android.mystic.log.MysticLog;
-import com.android.mystic.provider.MysticProvider;
 
 /**
  * Created by janagaraj.veluchamy on 6/23/2016.
@@ -42,7 +40,9 @@ public class MysticApp extends Application {
 
     public Context getApplicationContext() {
         /*Getting application context for the app*/
-        mContext = getApplicationContext();
+        if(mContext == null) {
+            mContext = getApplicationContext();
+        }
         return mContext;
     }
 

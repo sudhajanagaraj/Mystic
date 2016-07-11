@@ -12,7 +12,10 @@ public class ProviderUtility {
 
     // used for the UriMacher
     public static final int MASTER = 0x01;
-    public static final int MASTER_ID = 0x02;
+    public static final int MASTER_ID = MASTER + 0x01;
+
+    public static final int QUOTES = MASTER_ID + 0x01;
+    public static final int QUOTES_ID = QUOTES + 0x01;
 
     private final static String AUTHORITY = "com.android.mystic";
    // Content provider "content://com.android.mystic/"
@@ -20,13 +23,22 @@ public class ProviderUtility {
 
     private final static String MASTER_PATH = MysticContent.TABLE_NAME_MASTER;
 
+    private final static String QUOTES_PATH = MysticContent.TABLE_NAME_QUOTES;
+
+
     public final static Uri MASTER_URI = Uri.parse(CONTENT_URI + MASTER_PATH);
+
+    public final static Uri QUOTES_URI = Uri.parse(CONTENT_URI + QUOTES_PATH);
+
 
     private static final UriMatcher sURIMatcher = new UriMatcher(
             UriMatcher.NO_MATCH);
     static {
         sURIMatcher.addURI(AUTHORITY, MASTER_PATH, MASTER);
         sURIMatcher.addURI(AUTHORITY, MASTER_PATH + "/#", MASTER_ID);
+
+        sURIMatcher.addURI(AUTHORITY, QUOTES_PATH, QUOTES);
+        sURIMatcher.addURI(AUTHORITY, QUOTES_PATH + "/#", QUOTES_ID);
     }
 
     public static int getMatchURI(Uri uri) {
