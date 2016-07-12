@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Mystic.iml" filepath="$PROJECT_DIR$/Mystic.iml" />
       <module fileurl="file://$PROJECT_DIR$/mystic/mystic.iml" filepath="$PROJECT_DIR$/mystic/mystic.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mystic/mystic.iml" filepath="$PROJECT_DIR$/mystic/mystic.iml" />
     </modules>
   </component>
 </project>

@@ -32,28 +32,33 @@ public final class MysticContent {
         public final static String COLUMN_NAME_DISCIPLE = "disciple";
 
         public final static int COLUMN_INDEX_MASTER_ID = 0;
-        public final static int COLUMN_INDEX_MASTER_NAME = 1;
-        public final static int COLUMN_INDEX_MASTER_SPOUSE_NAME = 2;
-        public final static int COLUMN_INDEX_DOB = 3;
-        public final static int COLUMN_INDEX_DOD = 4;
-        public final static int COLUMN_INDEX_ABOUT_LIFE = 5;
-        public final static int COLUMN_INDEX_PIC1 = 6;
-        public final static int COLUMN_INDEX_PIC2 = 7;
-        public final static int COLUMN_INDEX_WIKI_LINK = 8;
-        public final static int COLUMN_INDEX_DISCIPLE = 9;
+        public final static int COLUMN_INDEX_MASTER_NAME = COLUMN_INDEX_MASTER_ID + 1;
+        public final static int COLUMN_INDEX_MASTER_SPOUSE_NAME = COLUMN_INDEX_MASTER_NAME + 1;
+        public final static int COLUMN_INDEX_DOB = COLUMN_INDEX_MASTER_SPOUSE_NAME + 1;
+        public final static int COLUMN_INDEX_DOD = COLUMN_INDEX_DOB + 1;
+        public final static int COLUMN_INDEX_ABOUT_LIFE = COLUMN_INDEX_DOD + 1;
+        public final static int COLUMN_INDEX_PIC1 = COLUMN_INDEX_ABOUT_LIFE + 1;
+        public final static int COLUMN_INDEX_PIC2 = COLUMN_INDEX_PIC1 + 1;
+        public final static int COLUMN_INDEX_WIKI_LINK = COLUMN_INDEX_PIC2 + 1;
+        public final static int COLUMN_INDEX_DISCIPLE = COLUMN_INDEX_WIKI_LINK + 1;
     }
 
 
     public abstract class Quotes implements BaseColumns {
         /*Quotes table */
+        public final static String COLUMN_NAME_QUOTES_TITLE= "title";
         public final static String COLUMN_NAME_QUOTES_DESC = "quoteDesc";
         public final static String COLUMN_NAME_MASTER_ID = "masterId";
-        public final static String COLUMN_NAME_FAVORITE = "favorite";
-        public final static String COLUMN_NAME_SEEN = "seen";
+        public final static String COLUMN_NAME_QUOTES_FAVORITE = "favorite";
+        public final static String COLUMN_NAME_QUOTES_SEEN = "seen";
+        public final static String COLUMN_NAME_QUOTES_CATEGORY= "category";
 
-        public final static int COLUMN_INDEX_QUOTES_DESC = 0;
-        public final static int COLUMN_INDEX_MASTER_ID = 1;
-        public final static int COLUMN_INDEX_FAVORITE = 2;
-        public final static int COLUMN_INDEX_SEEN = 3;
+        public final static int COLUMN_INDEX_QUOTES_ID = 0;
+        public final static int COLUMN_INDEX_QUOTES_TITLE = COLUMN_INDEX_QUOTES_ID + 1;
+        public final static int COLUMN_INDEX_QUOTES_DESC = COLUMN_INDEX_QUOTES_TITLE + 1;
+        public final static int COLUMN_INDEX_MASTER_ID = COLUMN_INDEX_QUOTES_DESC + 1;
+        public final static int COLUMN_INDEX_QUOTES_FAVORITE = COLUMN_INDEX_MASTER_ID + 1;
+        public final static int COLUMN_INDEX_QUOTES_SEEN = COLUMN_INDEX_QUOTES_FAVORITE + 1;
+        public final static int COLUMN_INDEX_QUOTES_CATEGORY = COLUMN_INDEX_QUOTES_SEEN + 1;
     }
 }

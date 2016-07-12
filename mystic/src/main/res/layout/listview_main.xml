@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/android_list_view_tutorial_with_example"
+    android:id="@+id/android_list_view"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 
@@ -11,27 +11,40 @@
         android:layout_height="80dp"
         android:contentDescription="@string/app_name"
         android:paddingLeft="5dp"
-        android:paddingRight="5dp" />
+        android:paddingRight="5dp"
+        android:src="@drawable/gautambuddha" />
 
     <TextView
-        android:id="@+id/list_Description"
+        android:id="@+id/list_Title"
         android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/list_ProfilePic"
         android:paddingLeft="10dp"
         android:textColor="#3399FF"
+        android:text="Accept Yourself"
         android:textSize="12sp" />
 
     <TextView
-        android:id="@+id/list_Title"
+        android:id="@+id/list_Desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/list_Description"
-        android:layout_below="@+id/list_Description"
         android:paddingBottom="10dp"
-        android:textSize="8sp"
-        android:textStyle="bold" />
+        android:textSize="12sp"
+        android:text="Accept yourself as you are. And that is the most difficult thing in the world, because it goes against your training, education, your culture."
+        android:textStyle="bold"
+        android:layout_below="@+id/list_Title"
+        android:layout_toEndOf="@+id/list_ProfilePic"
+        android:layout_alignBottom="@+id/list_ProfilePic" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/list_imgFav"
+        android:src="@android:drawable/star_off"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/list_Desc" />
 
 
 </RelativeLayout>

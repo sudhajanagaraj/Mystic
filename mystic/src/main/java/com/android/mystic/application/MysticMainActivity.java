@@ -20,6 +20,7 @@ import android.widget.ListView;
 import com.android.mystic.R;
 import com.android.mystic.adapter.CustomListAdapter;
 import com.android.mystic.data.ListRowItems;
+import com.android.mystic.log.MysticLog;
 import com.android.mystic.provider.DBUtility;
 import com.android.mystic.provider.MysticContent;
 import com.android.mystic.provider.ProviderUtility;
@@ -146,9 +147,9 @@ public class MysticMainActivity extends AppCompatActivity
             if (cursor != null && cursor.moveToFirst()) {
                 do {
                     //assing values
-                    String decr = cursor.getString(MysticContent.Quotes.COLUMN_INDEX_QUOTES_DESC);
-                    int id = cursor.getInt(MysticContent.Quotes.COLUMN_INDEX_MASTER_ID);
-                    ListRowItems item = new ListRowItems(R.drawable.ic_launcher,"Dummy",decr);
+                    String descr = cursor.getString(MysticContent.Quotes.COLUMN_INDEX_QUOTES_DESC);
+                    String title = cursor.getString(MysticContent.Quotes.COLUMN_INDEX_QUOTES_TITLE);
+                    ListRowItems item = new ListRowItems(R.drawable.ic_launcher,title,descr);
                     rowItems.add(item);
                 } while (cursor.moveToNext());
             }

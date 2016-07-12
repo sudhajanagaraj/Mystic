@@ -25,12 +25,13 @@ public class DBUtility {
     protected final static String CREATE_QUOTES_TABLE = "CREATE TABLE IF NOT EXISTS " +
             MysticContent.TABLE_NAME_QUOTES + " (" +
             MysticContent.Quotes._ID + MysticContent.INTEGER_TYPE + MysticContent.PRIMARY_KEY + MysticContent.COMMA_SEP +
+            MysticContent.Quotes.COLUMN_NAME_QUOTES_TITLE + MysticContent.TEXT_TYPE +  MysticContent.COMMA_SEP +
             MysticContent.Quotes.COLUMN_NAME_QUOTES_DESC + MysticContent.TEXT_TYPE + MysticContent.UNIQUE + MysticContent.COMMA_SEP +
             MysticContent.Quotes.COLUMN_NAME_MASTER_ID + MysticContent.INTEGER_TYPE + MysticContent.COMMA_SEP +
-            MysticContent.Quotes.COLUMN_NAME_FAVORITE + MysticContent.BOOL_TYPE + MysticContent.COMMA_SEP +
-            MysticContent.Quotes.COLUMN_NAME_SEEN + MysticContent.BOOL_TYPE  + " )";
-            // category - where it belongs -- life, sex, money, and power
-            //
+            MysticContent.Quotes.COLUMN_NAME_QUOTES_FAVORITE + MysticContent.BOOL_TYPE + MysticContent.COMMA_SEP +
+            MysticContent.Quotes.COLUMN_NAME_QUOTES_SEEN + MysticContent.BOOL_TYPE  +
+            MysticContent.Quotes.COLUMN_NAME_QUOTES_CATEGORY + MysticContent.TEXT_TYPE
+            + " )";
 
     public static void insertMasterTable(Context context) {
         ContentValues cv = new ContentValues();
@@ -43,10 +44,11 @@ public class DBUtility {
 
     public static void insertQuotesTable(Context context) {
         ContentValues cv = new ContentValues();
-        cv.put(MysticContent.Quotes.COLUMN_NAME_QUOTES_DESC, "This is totally void");
+        cv.put(MysticContent.Quotes.COLUMN_NAME_QUOTES_TITLE, "Accept Yourself");
+        cv.put(MysticContent.Quotes.COLUMN_NAME_QUOTES_DESC, "Accept yourself as you are. And that is the most difficult thing in the world, because it goes against your training, education, your culture.");
         cv.put(MysticContent.Quotes.COLUMN_NAME_MASTER_ID, 1);
-        cv.put(MysticContent.Quotes.COLUMN_NAME_FAVORITE, false);
-        cv.put(MysticContent.Quotes.COLUMN_NAME_SEEN, false);
+        cv.put(MysticContent.Quotes.COLUMN_NAME_QUOTES_FAVORITE, false);
+        cv.put(MysticContent.Quotes.COLUMN_NAME_QUOTES_SEEN, false);
         context.getContentResolver().insert(ProviderUtility.QUOTES_URI, cv);
     }
 }

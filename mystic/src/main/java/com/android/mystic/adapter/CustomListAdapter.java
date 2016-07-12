@@ -20,42 +20,43 @@ import java.util.List;
 public class CustomListAdapter extends BaseAdapter {
 
     private Context mContext;
-    List<ListRowItems> mQuotesLists;
+    List<ListRowItems> mRowItem;
     private int mResId;
-    public CustomListAdapter(Context context,int mResId, List<ListRowItems> quotesItem) {
+    public CustomListAdapter(Context context,int mResId, List<ListRowItems> mRowItem) {
         this.mContext = context;
-        this.mQuotesLists = quotesItem;
+        this.mRowItem = mRowItem;
         this.mResId = mResId;
     }
 
     @Override
     public int getCount() {
-        if (mQuotesLists == null) {
+        if (mRowItem == null) {
             return 0;
         }
-        return mQuotesLists.size();
+        return mRowItem.size();
     }
 
     @Override
     public Object getItem(int pos) {
-        if (mQuotesLists == null) {
+        if (mRowItem == null) {
             return null;
         }
-        return mQuotesLists.get(pos);
+        return mRowItem.get(pos);
     }
 
     @Override
     public long getItemId(int pos) {
-        if (mQuotesLists == null) {
+        if (mRowItem == null) {
             return 0;
         }
-        return mQuotesLists.indexOf(getItem(pos));
+        return mRowItem.indexOf(getItem(pos));
     }
 
     private class ViewHolder {
         ImageView imageView;
         TextView txtTitle;
         TextView txtDesc;
+        ImageView imgFav;
     }
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
@@ -66,9 +67,10 @@ public class CustomListAdapter extends BaseAdapter {
         if (view == null) {
             view = mInflater.inflate(mResId, null);
             holder = new ViewHolder();
-            holder.txtDesc = (TextView) view.findViewById(R.id.list_Description);
+            holder.txtDesc = (TextView) view.findViewById(R.id.list_Desc);
             holder.txtTitle = (TextView) view.findViewById(R.id.list_Title);
             holder.imageView = (ImageView) view.findViewById(R.id.list_ProfilePic);
+            holder.imgFav = (ImageView) view.findViewById(R.id.list_imgFav);
             view.setTag(holder);
         }
         else {
@@ -80,6 +82,7 @@ public class CustomListAdapter extends BaseAdapter {
         holder.txtDesc.setText(rowItem.getDescription());
         holder.txtTitle.setText(rowItem.getTitle());
         holder.imageView.setImageResource(rowItem.getProfilePicId());
+        holder.imgFav.setImageResource(rowItem.getImgFavResId());
 
         return view;
     }

@@ -7,11 +7,13 @@ public class ListRowItems {
     private String mTitle;
     private String mDescription;
     private int mProfilePicId;
+    private int mImgFavResId;
 
     public ListRowItems(int mProfilePicId, String mTitle, String mDescription) {
         this.mProfilePicId = mProfilePicId;
         this.mTitle = mTitle;
         this.mDescription = mDescription;
+        this.mImgFavResId = android.support.design.R.drawable.abc_ic_star_black_36dp;
     }
     public String getTitle() {
         return mTitle;
@@ -29,6 +31,14 @@ public class ListRowItems {
         this.mProfilePicId = mProfilePicId;
     }
 
+
+    public int getImgFavResId() {
+        return mImgFavResId;
+    }
+
+    public void setImgFavResId(int mImgFavResId) {
+        this.mImgFavResId = mImgFavResId;
+    }
     public String getDescription() {
         return mDescription;
     }
