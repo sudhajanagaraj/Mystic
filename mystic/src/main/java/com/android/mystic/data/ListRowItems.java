@@ -1,5 +1,7 @@
 package com.android.mystic.data;
 
+import com.android.mystic.R;
+
 /**
  * Created by janagaraj.veluchamy on 7/4/2016.
  */
@@ -13,7 +15,7 @@ public class ListRowItems {
         this.mProfilePicId = mProfilePicId;
         this.mTitle = mTitle;
         this.mDescription = mDescription;
-        this.mImgFavResId = android.support.design.R.drawable.abc_ic_star_black_36dp;
+        this.mImgFavResId = R.mipmap.ic_star_border_black_24dp;
     }
     public String getTitle() {
         return mTitle;

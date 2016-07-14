@@ -27,10 +27,10 @@ public class FullscreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_fullscreen);
-        tvContent = (TextView)findViewById(R.id.tvFullContent);
-        tvContent.setMovementMethod(new ScrollingMovementMethod());
-        textContent = this.getResources().getText(R.string.dummy_content).toString();
-        MysticLog.e(textContent);
-        tvContent.setText(textContent);
+      //  tvContent = (TextView)findViewById(R.id.tvFullContent);
+      //  tvContent.setMovementMethod(new ScrollingMovementMethod());
+     //   textContent = this.getResources().getText(R.string.dummy_content).toString();
+     //   MysticLog.e(textContent);
+      //  tvContent.setText(textContent);
     }
 }

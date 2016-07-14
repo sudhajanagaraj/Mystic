@@ -30,14 +30,6 @@ public class MastersListActivity extends AppCompatActivity  {
         listView = (ListView) findViewById(R.id.listView_Masters);
         CustomListAdapter adapter = new CustomListAdapter(this,R.layout.listview_main, getResultsMasters());
         listView.setAdapter(adapter);
-        AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view, int position,long id) {
-                Intent intent = new Intent();
-                intent.setClass(MastersListActivity.this,FullscreenActivity.class);
-                startActivity(intent);
-            }
-        };
-        listView.setOnItemClickListener(listener);
     }
 
     List<ListRowItems> getResultsMasters() {
