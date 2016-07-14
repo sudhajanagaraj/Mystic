@@ -125,8 +125,7 @@ public class MysticMainActivity extends AppCompatActivity
         } else if (id == R.id.nav_favourites) {
 
         } else if (id == R.id.nav_masters) {
-            intent = new Intent(this, MastersListActivity.class);
-            startActivity(intent);
+
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {

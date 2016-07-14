@@ -2,7 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/android_list_view"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:paddingStart="3dp"
+    android:paddingEnd="3dp">
 
 
     <ImageView
@@ -35,18 +37,19 @@
         android:textStyle="bold"
         android:layout_below="@+id/list_Title"
         android:layout_toEndOf="@+id/list_ProfilePic"
-        android:layout_alignBottom="@+id/list_ProfilePic" />
+        android:layout_alignBottom="@+id/list_ProfilePic"
+        android:gravity="left|center_vertical" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/list_imgFav"
         android:src="@android:drawable/star_off"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_above="@+id/list_Desc"
         android:clickable="true"
-        android:onClick="setQuotesFavorite" />
+        android:onClick="setQuotesFavorite"
+        android:layout_above="@+id/list_Desc"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
 
 
 </RelativeLayout>

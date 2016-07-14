@@ -14,7 +14,7 @@ public final class MysticContent {
     public final static String TEXT_TYPE = " TEXT";
     public final static String DATE_TYPE = " Date";
     public final static String INTEGER_TYPE = " INTEGER";
-    public final static String UNIQUE = " UNIQUE";
+    public final static String UNIQUE = "";//" UNIQUE";
     public final static String COMMA_SEP = " ,";
     public final static String PRIMARY_KEY = " PRIMARY KEY";
 

@@ -15,7 +15,7 @@ public class ListRowItems {
         this.mProfilePicId = mProfilePicId;
         this.mTitle = mTitle;
         this.mDescription = mDescription;
-        this.mImgFavResId = R.mipmap.ic_star_border_black_24dp;
+        this.mImgFavResId = R.mipmap.ic_star_border_black_36dp;
     }
     public String getTitle() {
         return mTitle;

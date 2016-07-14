@@ -21,7 +21,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_mystic_navigation" />
+    <include layout="@layout/list_mystic_quotes" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"

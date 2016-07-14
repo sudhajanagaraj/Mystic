@@ -13,7 +13,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.mystic.R;
+import com.android.mystic.data.IListSelection;
 import com.android.mystic.data.ListRowItems;
+import com.android.mystic.data.QuotesListSelection;
 import com.android.mystic.ui.FullscreenActivity;
 
 import java.util.List;
@@ -99,19 +101,18 @@ public class CustomListAdapter extends BaseAdapter {
     // Create an anonymous implementation of OnClickListener
     private View.OnClickListener mItemListener = new View.OnClickListener() {
         public void onClick(View v) {
+            IListSelection iList = new QuotesListSelection(mContext,v);
             switch (v.getId()) {
-
                 case R.id.list_Desc:
                 case R.id.list_Title:
+                    iList.textDescriptionSelected();
+                    break;
                 case R.id.list_ProfilePic:
-                    Intent intent = new Intent();
-                    intent.setClass(mContext, FullscreenActivity.class);
-                    mContext.startActivity(intent);
+                    iList.imgProfileSelected();
                     break;
                 case R.id.list_imgFav:
-                    ImageView imgFav = (ImageView) v.findViewById(R.id.list_imgFav);
-                    imgFav.setImageResource(R.mipmap.ic_stars_black_24dp);
-                    break;
+                    iList.imgFavoriteSelected(R.id.list_imgFav);
+                     break;
                 default:
                     break;
 

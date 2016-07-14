@@ -22,7 +22,10 @@
             android:layout_height="wrap_content"
             android:id="@+id/listView_Quotes"
             android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true" />
+            android:layout_alignParentTop="true"
+            android:dividerHeight="2dp"
+            android:footerDividersEnabled="true"
+            android:headerDividersEnabled="true" />
 
     </LinearLayout>
 
