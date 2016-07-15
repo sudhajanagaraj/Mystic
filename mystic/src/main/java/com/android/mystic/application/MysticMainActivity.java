@@ -1,6 +1,9 @@
 package com.android.mystic.application;
 
+import android.app.LoaderManager;
+import android.content.Context;
 import android.content.Intent;
+import android.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -20,6 +23,7 @@ import android.widget.ListView;
 import com.android.mystic.R;
 import com.android.mystic.adapter.CustomListAdapter;
 import com.android.mystic.data.ListRowItems;
+import com.android.mystic.data.MysticConstants;
 import com.android.mystic.log.MysticLog;
 import com.android.mystic.provider.DBUtility;
 import com.android.mystic.provider.MysticContent;
@@ -70,14 +74,7 @@ public class MysticMainActivity extends AppCompatActivity
         CustomListAdapter adapter = new CustomListAdapter(this,R.layout.listview_main, getResultsQuotes());
         listView.setAdapter(adapter);
 
-        AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view, int position,long id) {
-                Intent intent = new Intent();
-                intent.setClass(MysticMainActivity.this,FullscreenActivity.class);
-                startActivity(intent);
-            }
-        };
-        listView.setOnItemClickListener(listener);
+
     }
 
     @Override
@@ -138,6 +135,32 @@ public class MysticMainActivity extends AppCompatActivity
         return true;
     }
 
+    // https://developer.android.com/guide/components/loaders.html#summary
+    class QuotesListCursorLoader implements LoaderManager.LoaderCallbacks {
+
+
+        public QuotesListCursorLoader() {
+            // Prepare the loader.  Either re-connect with an existing one,
+            // or start a new one.
+            getLoaderManager().initLoader(MysticConstants.QUOTES_LIST_LOADER_ID, null, this);
+
+        }
+
+        @Override
+        public Loader onCreateLoader(int i, Bundle bundle) {
+            return null;
+        }
+
+        @Override
+        public void onLoadFinished(Loader loader, Object o) {
+
+        }
+
+        @Override
+        public void onLoaderReset(Loader loader) {
+
+        }
+    }
 
     List<ListRowItems> getResultsQuotes() {
         rowItems = new ArrayList<ListRowItems>();

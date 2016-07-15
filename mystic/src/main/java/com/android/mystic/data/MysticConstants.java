@@ -7,4 +7,8 @@ public class MysticConstants {
 
     /*Notification job id*/
     public static int NOTIFY_JOB_ID = 1000;
+
+    /*Loader Constants*/
+    public static int QUOTES_LIST_LOADER_ID = 1;
+
 }
