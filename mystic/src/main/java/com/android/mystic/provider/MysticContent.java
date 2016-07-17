@@ -48,7 +48,7 @@ public final class MysticContent {
         /*Quotes table */
         public final static String COLUMN_NAME_QUOTES_TITLE= "title";
         public final static String COLUMN_NAME_QUOTES_DESC = "quoteDesc";
-        public final static String COLUMN_NAME_MASTER_ID = "masterId";
+        public final static String COLUMN_NAME_QUOTES_MASTER_ID = "masterId";
         public final static String COLUMN_NAME_QUOTES_FAVORITE = "favorite";
         public final static String COLUMN_NAME_QUOTES_SEEN = "seen";
         public final static String COLUMN_NAME_QUOTES_CATEGORY= "category";

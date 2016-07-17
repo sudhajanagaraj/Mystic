@@ -27,7 +27,7 @@ public class DBUtility {
             MysticContent.Quotes._ID + MysticContent.INTEGER_TYPE + MysticContent.PRIMARY_KEY + MysticContent.COMMA_SEP +
             MysticContent.Quotes.COLUMN_NAME_QUOTES_TITLE + MysticContent.TEXT_TYPE +  MysticContent.COMMA_SEP +
             MysticContent.Quotes.COLUMN_NAME_QUOTES_DESC + MysticContent.TEXT_TYPE + MysticContent.UNIQUE + MysticContent.COMMA_SEP +
-            MysticContent.Quotes.COLUMN_NAME_MASTER_ID + MysticContent.INTEGER_TYPE + MysticContent.COMMA_SEP +
+            MysticContent.Quotes.COLUMN_NAME_QUOTES_MASTER_ID + MysticContent.INTEGER_TYPE + MysticContent.COMMA_SEP +
             MysticContent.Quotes.COLUMN_NAME_QUOTES_FAVORITE + MysticContent.BOOL_TYPE + MysticContent.COMMA_SEP +
             MysticContent.Quotes.COLUMN_NAME_QUOTES_SEEN + MysticContent.BOOL_TYPE  +
             MysticContent.Quotes.COLUMN_NAME_QUOTES_CATEGORY + MysticContent.TEXT_TYPE
@@ -46,7 +46,7 @@ public class DBUtility {
         ContentValues cv = new ContentValues();
         cv.put(MysticContent.Quotes.COLUMN_NAME_QUOTES_TITLE, "Accept Yourself");
         cv.put(MysticContent.Quotes.COLUMN_NAME_QUOTES_DESC, "Accept yourself as you are. And that is the most difficult thing in the world, because it goes against your training, education, your culture.");
-        cv.put(MysticContent.Quotes.COLUMN_NAME_MASTER_ID, 1);
+        cv.put(MysticContent.Quotes.COLUMN_NAME_QUOTES_MASTER_ID, 1);
         cv.put(MysticContent.Quotes.COLUMN_NAME_QUOTES_FAVORITE, false);
         cv.put(MysticContent.Quotes.COLUMN_NAME_QUOTES_SEEN, false);
         context.getContentResolver().insert(ProviderUtility.QUOTES_URI, cv);
