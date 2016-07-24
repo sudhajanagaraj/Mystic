@@ -118,17 +118,25 @@ public class MysticMainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         Intent intent = null;
-        if (id == R.id.nav_home) {
-            // Handle the camera action
-        } else if (id == R.id.nav_favourites) {
-
-        } else if (id == R.id.nav_masters) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        switch(id) {
+            case R.id.nav_quotes:
+                break;
+            case R.id.nav_masters:
+                intent = new Intent(this, MastersListActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.nav_cartoons:
+                break;
+            case R.id.nav_favourites:
+                break;
+            case R.id.nav_filters:
+                break;
+            case R.id.nav_share:
+                break;
+            case R.id.nav_send:
+                break;
+            default:
+                break;
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

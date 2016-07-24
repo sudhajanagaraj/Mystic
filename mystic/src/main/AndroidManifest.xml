@@ -39,9 +39,16 @@
             android:exported="true" />
 
         <receiver
-            android:name=".receiver.ConnectivityChange"
+            android:name=".receiver.MysticBroadCast"
             android:enabled="true"
-            android:exported="true" />
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_BATTERY_OKAY" />
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
 
         <activity
             android:name=".application.MysticMainActivity"
