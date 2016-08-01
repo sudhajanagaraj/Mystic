@@ -7,6 +7,7 @@ import android.provider.BaseColumns;
  */
 public final class MysticContent {
 
+    public final static String TABLE_NAME_TITLE = "Titles";
     public final static String TABLE_NAME_MASTER = "Master";
     public final static String TABLE_NAME_QUOTES = "Quotes";
 
@@ -14,10 +15,23 @@ public final class MysticContent {
     public final static String TEXT_TYPE = " TEXT";
     public final static String DATE_TYPE = " Date";
     public final static String INTEGER_TYPE = " INTEGER";
-    public final static String UNIQUE = "";//" UNIQUE";
+    public final static String UNIQUE = " UNIQUE";
     public final static String COMMA_SEP = " ,";
     public final static String PRIMARY_KEY = " PRIMARY KEY";
 
+    public abstract class Titles implements BaseColumns {
+        /*Master table */
+        public final static String COLUMN_NAME_TITLE = "title";
+        public final static String COLUMN_NAME_DESC = "desc";
+        public final static String COLUMN_NAME_CARTOON_URI = "cartoonUri";
+        public final static String COLUMN_NAME_MASTER_URI = "masterUri";
+
+        public final static int COLUMN_INDEX_TITLE_ID = 0;
+        public final static int COLUMN_INDEX_TITLE = COLUMN_INDEX_TITLE_ID + 1;
+        public final static int COLUMN_INDEX_DESC = COLUMN_INDEX_TITLE + 1;
+        public final static int COLUMN_INDEX_CARTOON_URI = COLUMN_INDEX_DESC + 1;
+        public final static int COLUMN_INDEX_MASTER_URI = COLUMN_INDEX_CARTOON_URI + 1;
+    }
 
     public abstract class Master implements BaseColumns {
         /*Master table */

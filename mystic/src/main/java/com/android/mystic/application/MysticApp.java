@@ -8,6 +8,7 @@ import android.content.res.AssetManager;
 import android.content.res.Configuration;
 
 import com.android.mystic.log.MysticLog;
+import com.android.mystic.provider.DBUtility;
 
 /**
  * Created by janagaraj.veluchamy on 6/23/2016.
@@ -21,6 +22,9 @@ public class MysticApp extends Application {
         super.onCreate();
         MysticLog.init(this);
         MysticLog.i("OnCreate Called !!!!");
+        //Build up Title table with initial values
+        DBUtility.insertTitleTable(this);
+
     }
 
     @Override

@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-
         <!-- to be activated service on boot is completed -->
         <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
@@ -26,29 +25,28 @@
             android:name=".service.MysticService"
             android:enabled="true"
             android:exported="true" />
-
-        <service android:name=".service.MysticJobService"
-            android:permission="android.permission.BIND_JOB_SERVICE"
-            android:exported="false" />
+        <service
+            android:name=".service.MysticJobService"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
 
         <provider
             android:name=".provider.MysticProvider"
             android:authorities="@string/authorities"
             android:enabled="true"
-            android:initOrder="0xFFFFFF"
-            android:exported="true" />
+            android:exported="true"
+            android:initOrder="0xFFFFFF" />
 
         <receiver
             android:name=".receiver.MysticBroadCast"
             android:enabled="true"
-            android:exported="false" >
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.ACTION_BATTERY_OKAY" />
                 <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-
 
         <activity
             android:name=".application.MysticMainActivity"
@@ -63,10 +61,9 @@
         <activity
             android:name=".ui.SettingsActivity"
             android:label="@string/title_activity_settings" />
-
-        <activity android:name=".ui.MastersListActivity"
-            android:label="@string/title_activity_masters"   />
-
+        <activity
+            android:name=".ui.MastersListActivity"
+            android:label="@string/title_activity_masters" />
         <activity
             android:name=".ui.FiltersActivity"
             android:label="@string/title_activity_filters"
@@ -75,12 +72,12 @@
             android:name=".ui.StoriesActivity"
             android:label="@string/title_activity_stories"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".ui.FullscreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_fullscreen"
-            android:theme="@style/FullscreenTheme"></activity>
+            android:theme="@style/FullscreenTheme" />
+        <activity android:name=".ui.QuotesListActivity"></activity>
     </application>
 
 </manifest>

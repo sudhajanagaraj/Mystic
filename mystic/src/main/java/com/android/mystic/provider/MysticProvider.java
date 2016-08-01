@@ -54,6 +54,7 @@ public class MysticProvider extends ContentProvider {
         String tableName = null;
         long newRowId = 0;
         switch(ProviderUtility.getMatchURI(uri)) {
+            case ProviderUtility.TITLE:
             case ProviderUtility.MASTER:
             case ProviderUtility.QUOTES:
                 tableName = uri.getLastPathSegment();
@@ -91,6 +92,7 @@ public class MysticProvider extends ContentProvider {
         String tableName = null;
         Cursor queryCursor  = null;
         switch(ProviderUtility.getMatchURI(uri)) {
+            case ProviderUtility.TITLE:
             case ProviderUtility.MASTER:
             case ProviderUtility.QUOTES:
                 tableName = uri.getLastPathSegment();

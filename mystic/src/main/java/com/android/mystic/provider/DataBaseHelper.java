@@ -38,6 +38,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
        // createDataBase();
+        sqLiteDatabase.execSQL(DBUtility.CREATE_MAIN_TABLE);
         sqLiteDatabase.execSQL(DBUtility.CREATE_MASTER_TABLE);
         sqLiteDatabase.execSQL(DBUtility.CREATE_QUOTES_TABLE);
 

@@ -1,12 +1,28 @@
 package com.android.mystic.provider;
 
+import android.content.ContentProviderOperation;
 import android.content.ContentValues;
 import android.content.Context;
+
+import com.android.mystic.R;
+import com.android.mystic.log.MysticLog;
+
+import java.util.List;
 
 /**
  * Created by janagaraj.veluchamy on 7/11/2016.
  */
+//todo - Unique fields to be properly defined for each table
 public class DBUtility {
+
+    protected final static String CREATE_MAIN_TABLE = "CREATE TABLE IF NOT EXISTS " +
+            MysticContent.TABLE_NAME_TITLE + " (" +
+            MysticContent.Titles._ID + MysticContent.INTEGER_TYPE + MysticContent.PRIMARY_KEY + MysticContent.COMMA_SEP +
+            MysticContent.Titles.COLUMN_NAME_TITLE + MysticContent.TEXT_TYPE + MysticContent.UNIQUE + MysticContent.COMMA_SEP +
+            MysticContent.Titles.COLUMN_NAME_DESC + MysticContent.TEXT_TYPE + MysticContent.COMMA_SEP +
+            MysticContent.Titles.COLUMN_NAME_MASTER_URI + MysticContent.TEXT_TYPE + MysticContent.COMMA_SEP +
+            MysticContent.Titles.COLUMN_NAME_CARTOON_URI + MysticContent.TEXT_TYPE
+            + " )";
 
     protected final static String CREATE_MASTER_TABLE = "CREATE TABLE IF NOT EXISTS " +
             MysticContent.TABLE_NAME_MASTER + " (" +
@@ -50,5 +66,24 @@ public class DBUtility {
         cv.put(MysticContent.Quotes.COLUMN_NAME_QUOTES_FAVORITE, false);
         cv.put(MysticContent.Quotes.COLUMN_NAME_QUOTES_SEEN, false);
         context.getContentResolver().insert(ProviderUtility.QUOTES_URI, cv);
+    }
+
+    public static void insertTitleTable(Context context) {
+
+        if(context == null) {
+            return;
+        }
+        String[] titles = context.getResources().getStringArray(R.array.main_activity_titles);
+        String[] desc = context.getResources().getStringArray(R.array.main_activity_desc);
+        String[] mastersUri = context.getResources().getStringArray(R.array.main_activity_mastersUri);
+
+        for(int i =0; i < titles.length; i++){
+            ContentValues cv = new ContentValues();
+            cv.put(MysticContent.Titles.COLUMN_NAME_TITLE, titles[i]);
+            cv.put(MysticContent.Titles.COLUMN_NAME_DESC, desc[i]);
+            cv.put(MysticContent.Titles.COLUMN_NAME_CARTOON_URI, mastersUri[i]);
+            cv.put(MysticContent.Titles.COLUMN_NAME_MASTER_URI, mastersUri[i]);
+            context.getContentResolver().insert(ProviderUtility.TITLE_URI, cv);
+        }
     }
 }

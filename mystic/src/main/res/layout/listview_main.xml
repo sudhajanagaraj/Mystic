@@ -31,7 +31,6 @@
         android:id="@+id/list_Desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingBottom="10dp"
         android:textSize="12sp"
         android:text="Accept yourself as you are. And that is the most difficult thing in the world, because it goes against your training, education, your culture."
         android:textStyle="bold"

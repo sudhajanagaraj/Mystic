@@ -9,6 +9,8 @@ public class MysticConstants {
     public static int NOTIFY_JOB_ID = 1000;
 
     /*Loader Constants*/
-    public static int QUOTES_LIST_LOADER_ID = 1;
+    public static int TITLE_LIST_LOADER_ID = 1;
+
+    public static int QUOTES_LIST_LOADER_ID = TITLE_LIST_LOADER_ID + 1;
 
 }

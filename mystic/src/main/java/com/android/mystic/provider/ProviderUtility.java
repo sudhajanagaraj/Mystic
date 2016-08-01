@@ -11,7 +11,11 @@ import android.net.Uri;
 public class ProviderUtility {
 
     // used for the UriMacher
-    public static final int MASTER = 0x01;
+
+    public static final int TITLE = 0x01;
+    public static final int TITLE_ID = TITLE + 0x01;
+
+    public static final int MASTER = TITLE_ID + 0x01;
     public static final int MASTER_ID = MASTER + 0x01;
 
     public static final int QUOTES = MASTER_ID + 0x01;
@@ -21,10 +25,14 @@ public class ProviderUtility {
    // Content provider "content://com.android.mystic/"
     private final static Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/");
 
+    private final static String TITLE_PATH = MysticContent.TABLE_NAME_TITLE;
+
     private final static String MASTER_PATH = MysticContent.TABLE_NAME_MASTER;
 
     private final static String QUOTES_PATH = MysticContent.TABLE_NAME_QUOTES;
 
+
+    public final static Uri TITLE_URI = Uri.parse(CONTENT_URI + TITLE_PATH);
 
     public final static Uri MASTER_URI = Uri.parse(CONTENT_URI + MASTER_PATH);
 
@@ -34,6 +42,10 @@ public class ProviderUtility {
     private static final UriMatcher sURIMatcher = new UriMatcher(
             UriMatcher.NO_MATCH);
     static {
+
+        sURIMatcher.addURI(AUTHORITY, TITLE_PATH, TITLE);
+        sURIMatcher.addURI(AUTHORITY, TITLE_PATH + "/#", TITLE_ID);
+
         sURIMatcher.addURI(AUTHORITY, MASTER_PATH, MASTER);
         sURIMatcher.addURI(AUTHORITY, MASTER_PATH + "/#", MASTER_ID);
 
