@@ -13,4 +13,6 @@ public class MysticConstants {
 
     public static int QUOTES_LIST_LOADER_ID = TITLE_LIST_LOADER_ID + 1;
 
+    public static int MASTERS_LIST_LOADER_ID = QUOTES_LIST_LOADER_ID + 1;
+
 }
