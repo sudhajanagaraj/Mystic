@@ -2,21 +2,17 @@ package com.android.mystic.adapter;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.mystic.R;
 import com.android.mystic.data.IListSelection;
 import com.android.mystic.data.ListRowItems;
 import com.android.mystic.data.QuotesListSelection;
-import com.android.mystic.ui.FullscreenActivity;
 
 import java.util.List;
 
@@ -28,6 +24,12 @@ public class CustomListAdapter extends BaseAdapter {
     private Context mContext;
     List<ListRowItems> mRowItem;
     private int mResId;
+    private boolean isImgFav = true;
+    public CustomListAdapter(Context context,int mResId, List<ListRowItems> mRowItem,boolean isImgFav) {
+        this(context,mResId,mRowItem);
+        this.isImgFav = isImgFav;
+    }
+
     public CustomListAdapter(Context context,int mResId, List<ListRowItems> mRowItem) {
         this.mContext = context;
         this.mRowItem = mRowItem;
@@ -76,12 +78,15 @@ public class CustomListAdapter extends BaseAdapter {
             holder.txtDesc = (TextView) view.findViewById(R.id.list_Desc);
             holder.txtTitle = (TextView) view.findViewById(R.id.list_Title);
             holder.imageView = (ImageView) view.findViewById(R.id.list_ProfilePic);
-            holder.imgFav = (ImageView) view.findViewById(R.id.list_imgFav);
+            if(isImgFav) {
+                holder.imgFav = (ImageView) view.findViewById(R.id.list_imgFav);
+                holder.imgFav.setOnClickListener(mItemListener);
+            }
 
             holder.txtDesc.setOnClickListener(mItemListener);
             holder.txtTitle.setOnClickListener(mItemListener);
             holder.imageView.setOnClickListener(mItemListener);
-            holder.imgFav.setOnClickListener(mItemListener);
+
             view.setTag(holder);
         }
         else {

@@ -111,4 +111,6 @@ Every child has so much energy, and still he is not tense. Have you watched a ch
         <item>@drawable/nightbuddha</item>
         <item>@drawable/nightbuddha</item>
     </string-array>
+    <string name="title_activity_quotes_view">QuotesViewActivity</string>
+    <string name="title_activity_quotes">QuotesActivity</string>
 </resources>

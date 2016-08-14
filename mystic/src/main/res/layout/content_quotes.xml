@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.android.mystic.ui.QuotesActivity"
+    tools:showIn="@layout/activity_quotes_fragment">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imgQuotesMaster"
+        android:src="@mipmap/ic_launcher"
+        android:layout_alignBottom="@+id/tvMasterData" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:text="New Text"
+        android:id="@+id/tvQuoteContent"
+        android:layout_gravity="center_vertical"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignBottom="@+id/imgQuotesFav"
+        android:gravity="center_vertical|center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:id="@+id/tvMasterData"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/imgQuotesMaster" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imgQuotesFav"
+        android:src="@drawable/abc_ic_star_black_36dp"
+        android:layout_below="@+id/tvMasterData"
+        android:layout_toStartOf="@+id/imgQuotesShare"
+        android:layout_marginEnd="50dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imgQuotesShare"
+        android:src="@drawable/ic_menu_share"
+        android:layout_alignBottom="@+id/imgQuotesFav"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Small Text"
+        android:id="@+id/tvQuotesNum"
+        android:layout_alignBottom="@+id/tvQuoteContent"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>

@@ -7,11 +7,8 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.android.mystic.R;
-import com.android.mystic.log.MysticLog;
-import com.android.mystic.ui.FullscreenActivity;
 import com.android.mystic.ui.MastersListActivity;
-
-import java.util.HashMap;
+import com.android.mystic.ui.QuotesActivity;
 
 /**
  * Created by Sudha on 7/14/2016.
@@ -52,7 +49,7 @@ public class QuotesListSelection implements IListSelection {
 
     void startQuotesFullScreen() {
         Intent intent = new Intent();
-        intent.setClass(mContext, FullscreenActivity.class);
+        intent.setClass(mContext, QuotesActivity.class);
         mContext.startActivity(intent);
     }
 }

@@ -1,7 +1,6 @@
 package com.android.mystic.application;
 
 import android.app.LoaderManager;
-import android.content.Context;
 import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
@@ -18,23 +17,19 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.android.mystic.R;
 import com.android.mystic.adapter.CustomListAdapter;
 import com.android.mystic.data.ListRowItems;
 import com.android.mystic.data.MysticConstants;
-import com.android.mystic.log.MysticLog;
 import com.android.mystic.provider.DBUtility;
 import com.android.mystic.provider.MysticContent;
 import com.android.mystic.provider.ProviderUtility;
-import com.android.mystic.ui.FullscreenActivity;
 import com.android.mystic.ui.MastersListActivity;
 import com.android.mystic.ui.QuotesListActivity;
 import com.android.mystic.ui.SettingsActivity;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 

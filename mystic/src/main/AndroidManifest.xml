@@ -72,12 +72,11 @@
             android:name=".ui.StoriesActivity"
             android:label="@string/title_activity_stories"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ui.QuotesListActivity" />
         <activity
-            android:name=".ui.FullscreenActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_fullscreen"
-            android:theme="@style/FullscreenTheme" />
-        <activity android:name=".ui.QuotesListActivity"></activity>
+            android:name=".ui.QuotesActivity"
+            android:label="@string/title_activity_quotes"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>
