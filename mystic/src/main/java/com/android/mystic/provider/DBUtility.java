@@ -20,6 +20,7 @@ public class DBUtility {
             MysticContent.Titles._ID + MysticContent.INTEGER_TYPE + MysticContent.PRIMARY_KEY + MysticContent.COMMA_SEP +
             MysticContent.Titles.COLUMN_NAME_TITLE + MysticContent.TEXT_TYPE + MysticContent.UNIQUE + MysticContent.COMMA_SEP +
             MysticContent.Titles.COLUMN_NAME_DESC + MysticContent.TEXT_TYPE + MysticContent.COMMA_SEP +
+            MysticContent.Titles.COLUMN_NAME_QUOTE_ID + MysticContent.INTEGER_TYPE + MysticContent.COMMA_SEP +
             MysticContent.Titles.COLUMN_NAME_MASTER_URI + MysticContent.TEXT_TYPE + MysticContent.COMMA_SEP +
             MysticContent.Titles.COLUMN_NAME_CARTOON_URI + MysticContent.TEXT_TYPE
             + " )";
@@ -59,13 +60,22 @@ public class DBUtility {
     }
 
     public static void insertQuotesTable(Context context) {
-        ContentValues cv = new ContentValues();
-        cv.put(MysticContent.Quotes.COLUMN_NAME_QUOTES_TITLE, "Accept Yourself");
-        cv.put(MysticContent.Quotes.COLUMN_NAME_QUOTES_DESC, "Accept yourself as you are. And that is the most difficult thing in the world, because it goes against your training, education, your culture.");
-        cv.put(MysticContent.Quotes.COLUMN_NAME_QUOTES_MASTER_ID, 1);
-        cv.put(MysticContent.Quotes.COLUMN_NAME_QUOTES_FAVORITE, false);
-        cv.put(MysticContent.Quotes.COLUMN_NAME_QUOTES_SEEN, false);
-        context.getContentResolver().insert(ProviderUtility.QUOTES_URI, cv);
+        if(context == null) {
+            return;
+        }
+        String[] titles = context.getResources().getStringArray(R.array.main_activity_titles);
+        String[] desc = context.getResources().getStringArray(R.array.main_activity_desc);
+
+        for(int i =0; i < titles.length; i++){
+            ContentValues cv = new ContentValues();
+            cv.put(MysticContent.Quotes.COLUMN_NAME_QUOTES_TITLE, titles[i]);
+            cv.put(MysticContent.Quotes.COLUMN_NAME_QUOTES_DESC, desc[i]);
+            cv.put(MysticContent.Quotes.COLUMN_NAME_QUOTES_MASTER_ID, 1);
+            cv.put(MysticContent.Quotes.COLUMN_NAME_QUOTES_FAVORITE, false);
+            cv.put(MysticContent.Quotes.COLUMN_NAME_QUOTES_SEEN, false);
+            context.getContentResolver().insert(ProviderUtility.QUOTES_URI, cv);
+        }
+        MysticLog.d("insertQuotesTable executed !!");
     }
 
     public static void insertTitleTable(Context context) {
@@ -85,5 +95,7 @@ public class DBUtility {
             cv.put(MysticContent.Titles.COLUMN_NAME_MASTER_URI, mastersUri[i]);
             context.getContentResolver().insert(ProviderUtility.TITLE_URI, cv);
         }
+        MysticLog.d("insertTitleTable executed !!");
+
     }
 }

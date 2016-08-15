@@ -20,11 +20,15 @@ public class MysticApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        mContext = getApplicationContext();
         MysticLog.init(this);
         MysticLog.i("OnCreate Called !!!!");
         //Build up Title table with initial values
         DBUtility.insertTitleTable(this);
 
+    }
+    public static Context getContext() {
+        return mContext;
     }
 
     @Override
@@ -40,14 +44,6 @@ public class MysticApp extends Application {
     @Override
     public ApplicationInfo getApplicationInfo() {
         return super.getApplicationInfo();
-    }
-
-    public Context getApplicationContext() {
-        /*Getting application context for the app*/
-        if(mContext == null) {
-            mContext = getApplicationContext();
-        }
-        return mContext;
     }
 
     @Override

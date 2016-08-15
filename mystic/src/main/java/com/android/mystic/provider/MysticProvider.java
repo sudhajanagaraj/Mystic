@@ -102,6 +102,12 @@ public class MysticProvider extends ContentProvider {
                 break;
         }
         try {
+            if ((projection != null))
+                MysticLog.d(projection.toString());
+
+            if ((selection != null))
+                MysticLog.d(selection);
+
             if ((tableName != null)) {
                 queryCursor = db.query(
                         tableName,

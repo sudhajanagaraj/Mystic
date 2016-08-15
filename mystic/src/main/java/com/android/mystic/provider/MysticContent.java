@@ -25,12 +25,14 @@ public final class MysticContent {
         public final static String COLUMN_NAME_DESC = "desc";
         public final static String COLUMN_NAME_CARTOON_URI = "cartoonUri";
         public final static String COLUMN_NAME_MASTER_URI = "masterUri";
+        public final static String COLUMN_NAME_QUOTE_ID = "quotesId";
 
         public final static int COLUMN_INDEX_TITLE_ID = 0;
         public final static int COLUMN_INDEX_TITLE = COLUMN_INDEX_TITLE_ID + 1;
         public final static int COLUMN_INDEX_DESC = COLUMN_INDEX_TITLE + 1;
         public final static int COLUMN_INDEX_CARTOON_URI = COLUMN_INDEX_DESC + 1;
         public final static int COLUMN_INDEX_MASTER_URI = COLUMN_INDEX_CARTOON_URI + 1;
+        public final static int COLUMN_INDEX_QUOTE_ID = COLUMN_INDEX_MASTER_URI + 1;
     }
 
     public abstract class Master implements BaseColumns {

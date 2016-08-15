@@ -25,7 +25,6 @@ public class MastersListActivity extends AppCompatActivity  implements LoaderMan
 
     ListView listView;
     List<ListRowItems> rowItems;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,10 +37,9 @@ public class MastersListActivity extends AppCompatActivity  implements LoaderMan
 
     // https://developer.android.com/guide/components/loaders.html#summary
     String[]  mProjection = {
-            MysticContent.Quotes._ID,
-            MysticContent.Quotes.COLUMN_NAME_QUOTES_TITLE,
-            MysticContent.Quotes.COLUMN_NAME_QUOTES_DESC,
-            MysticContent.Quotes.COLUMN_NAME_QUOTES_FAVORITE,
+            MysticContent.Master._ID,
+            MysticContent.Master.COLUMN_NAME_MASTER_NAME,
+            MysticContent.Master.COLUMN_NAME_ABOUT_LIFE
     };
 
     @Override
