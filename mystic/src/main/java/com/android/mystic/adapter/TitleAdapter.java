@@ -19,18 +19,13 @@ import java.util.List;
 /**
  * Created by janagaraj.veluchamy on 7/4/2016.
  */
-public class CustomListAdapter extends BaseAdapter {
+public class TitleAdapter extends BaseAdapter {
 
     private Context mContext;
     List<ListRowItems> mRowItem;
     private int mResId;
-    private boolean isImgFav = true;
-    public CustomListAdapter(Context context,int mResId, List<ListRowItems> mRowItem,boolean isImgFav) {
-        this(context,mResId,mRowItem);
-        this.isImgFav = isImgFav;
-    }
 
-    public CustomListAdapter(Context context,int mResId, List<ListRowItems> mRowItem) {
+    public TitleAdapter(Context context, int mResId, List<ListRowItems> mRowItem) {
         this.mContext = context;
         this.mRowItem = mRowItem;
         this.mResId = mResId;
@@ -64,7 +59,6 @@ public class CustomListAdapter extends BaseAdapter {
         ImageView imageView;
         TextView txtTitle;
         TextView txtDesc;
-        ImageView imgFav;
     }
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
@@ -75,14 +69,9 @@ public class CustomListAdapter extends BaseAdapter {
         if (view == null) {
             view = mInflater.inflate(mResId, null);
             holder = new ViewHolder();
-            holder.txtDesc = (TextView) view.findViewById(R.id.list_Desc);
-            holder.txtTitle = (TextView) view.findViewById(R.id.list_Title);
-            holder.imageView = (ImageView) view.findViewById(R.id.list_ProfilePic);
-            if(isImgFav) {
-                holder.imgFav = (ImageView) view.findViewById(R.id.list_imgFav);
-                holder.imgFav.setOnClickListener(mItemListener);
-            }
-
+            holder.txtDesc = (TextView) view.findViewById(R.id.text_Desc);
+            holder.txtTitle = (TextView) view.findViewById(R.id.text_title);
+            holder.imageView = (ImageView) view.findViewById(R.id.title_ProfilePic);
             holder.txtDesc.setOnClickListener(mItemListener);
             holder.txtTitle.setOnClickListener(mItemListener);
             holder.imageView.setOnClickListener(mItemListener);
@@ -94,12 +83,9 @@ public class CustomListAdapter extends BaseAdapter {
         }
 
         ListRowItems rowItem = (ListRowItems) getItem(position);
-
         holder.txtDesc.setText(rowItem.getDescription());
         holder.txtTitle.setText(rowItem.getTitle());
         holder.imageView.setImageResource(rowItem.getProfilePicId());
-        holder.imgFav.setImageResource(rowItem.getImgFavResId());
-
         return view;
     }
 
@@ -115,9 +101,6 @@ public class CustomListAdapter extends BaseAdapter {
                 case R.id.list_ProfilePic:
                     iList.imgProfileSelected();
                     break;
-                case R.id.list_imgFav:
-                    iList.imgFavoriteSelected(R.id.list_imgFav);
-                     break;
                 default:
                     break;
 

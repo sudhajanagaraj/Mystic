@@ -2,17 +2,14 @@ package com.android.mystic.ui;
 
 import android.app.LoaderManager;
 import android.content.CursorLoader;
-import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.android.mystic.R;
-import com.android.mystic.adapter.CustomListAdapter;
+import com.android.mystic.adapter.QuotesListAdapter;
 import com.android.mystic.data.ListRowItems;
 import com.android.mystic.data.MysticConstants;
 import com.android.mystic.provider.MysticContent;
@@ -80,7 +77,7 @@ public class MastersListActivity extends AppCompatActivity  implements LoaderMan
             }
         }
 
-        CustomListAdapter adapter = new CustomListAdapter(this,R.layout.listview_main, rowItems );
+        QuotesListAdapter adapter = new QuotesListAdapter(this,R.layout.listview_quotes, rowItems );
         listView.setAdapter(adapter);
     }
 

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/title_tv_quotes"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingStart="3dp"
+    android:paddingEnd="3dp">
+
+
+    <ImageView
+        android:id="@+id/title_ProfilePic"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:contentDescription="@string/app_name"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:src="@drawable/gautambuddha" />
+
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/title_ProfilePic"
+        android:paddingLeft="10dp"
+        android:textColor="#3399FF"
+        android:text="Accept Yourself"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/text_Desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:text="Accept yourself as you are. And that is the most difficult thing in the world, because it goes against your training, education, your culture."
+        android:textStyle="bold"
+        android:layout_below="@+id/text_title"
+        android:layout_toEndOf="@+id/title_ProfilePic"
+        android:layout_alignBottom="@+id/title_ProfilePic"
+        android:gravity="left|center_vertical" />
+
+
+</RelativeLayout>

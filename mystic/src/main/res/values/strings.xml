@@ -85,32 +85,22 @@ Every child has so much energy, and still he is not tense. Have you watched a ch
 
     <string-array name="main_activity_titles">
         <item>Quotes of the Day</item>
-        <item>Master Says</item>
-        <item>Random Quotes</item>
-        <item>Stories</item>
-        <item>Cartoon of the Day</item>
+        <item>Today Story</item>
     </string-array>
     <string-array name="main_activity_desc">
         <item>If you can grow in love, you will grow in awareness. If you grow in awareness, you will grow in love</item>
         <item>There is no need to be more - you are enough. Everybody is enough</item>
-        <item>The men who love power never fall in love. Even if they fall in love they keep themselves at a distance</item>
-        <item>When you pray purify your intelligence and it becomes your wisdom. Purify yourself completely and you become one with whole</item>
-        <item>Man lives like a robot: mechanically efficient, but with no awareness</item>
     </string-array>
     <string-array name="main_activity_mastersUri">
-        <item>@drawable/nightbuddha</item>
-        <item>@drawable/nightbuddha</item>
-        <item>@drawable/nightbuddha</item>
         <item>@drawable/nightbuddha</item>
         <item>@drawable/nightbuddha</item>
     </string-array>
     <string-array name="main_activity_carttonsUri">
         <item>@drawable/nightbuddha</item>
         <item>@drawable/nightbuddha</item>
-        <item>@drawable/nightbuddha</item>
-        <item>@drawable/nightbuddha</item>
-        <item>@drawable/nightbuddha</item>
     </string-array>
+
+    <string name="title_activity_cartoon">Cartoon of the Day</string>
     <string name="title_activity_quotes_view">QuotesViewActivity</string>
     <string name="title_activity_quotes">QuotesActivity</string>
 </resources>

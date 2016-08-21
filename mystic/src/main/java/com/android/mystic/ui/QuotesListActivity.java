@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.widget.ListView;
 
 import com.android.mystic.R;
-import com.android.mystic.adapter.CustomListAdapter;
+import com.android.mystic.adapter.QuotesListAdapter;
 import com.android.mystic.data.ListRowItems;
 import com.android.mystic.data.MysticConstants;
 import com.android.mystic.provider.MysticContent;
@@ -80,7 +80,7 @@ public class QuotesListActivity extends AppCompatActivity implements
             }
         }
 
-        CustomListAdapter adapter = new CustomListAdapter(this,R.layout.listview_main, rowItems );
+        QuotesListAdapter adapter = new QuotesListAdapter(this,R.layout.listview_quotes, rowItems );
         listView.setAdapter(adapter);
     }
 

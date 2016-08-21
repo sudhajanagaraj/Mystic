@@ -20,7 +20,7 @@ import android.view.View;
 import android.widget.ListView;
 
 import com.android.mystic.R;
-import com.android.mystic.adapter.CustomListAdapter;
+import com.android.mystic.adapter.TitleAdapter;
 import com.android.mystic.data.ListRowItems;
 import com.android.mystic.data.MysticConstants;
 import com.android.mystic.provider.DBUtility;
@@ -188,7 +188,7 @@ public class MysticMainActivity extends AppCompatActivity
             }
         }
 
-        CustomListAdapter adapter = new CustomListAdapter(this,R.layout.listview_main, rowItems );
+        TitleAdapter adapter = new TitleAdapter(this,R.layout.list_title_quotes, rowItems);
         listView.setAdapter(adapter);
     }
 
