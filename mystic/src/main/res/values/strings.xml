@@ -85,7 +85,7 @@ Every child has so much energy, and still he is not tense. Have you watched a ch
 
     <string-array name="main_activity_titles">
         <item>Quotes of the Day</item>
-        <item>Today Story</item>
+        <item>Today\'s Story</item>
     </string-array>
     <string-array name="main_activity_desc">
         <item>If you can grow in love, you will grow in awareness. If you grow in awareness, you will grow in love</item>

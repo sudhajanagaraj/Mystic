@@ -17,7 +17,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.mystic.R;
 import com.android.mystic.adapter.TitleAdapter;
@@ -38,7 +41,8 @@ public class MysticMainActivity extends AppCompatActivity
 
     ListView listView;
     List<ListRowItems> rowItems;
-    private static String[] titles = null;
+    ImageView imgCartoon = null;
+    TextView tvCartoonTitle = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +74,9 @@ public class MysticMainActivity extends AppCompatActivity
         listView = (ListView) findViewById(R.id.listView_Title);
 
         getLoaderManager().initLoader(MysticConstants.TITLE_LIST_LOADER_ID, null, this);
+
+        imgCartoon =  (ImageView)findViewById(R.id.title_CarttoonPic);
+        imgCartoon.setOnClickListener(mImageOnClickListener);
 
     }
 
@@ -140,6 +147,11 @@ public class MysticMainActivity extends AppCompatActivity
         return true;
     }
 
+    private View.OnClickListener mImageOnClickListener = new View.OnClickListener() {
+        public void onClick(View v) {
+            Toast.makeText(MysticMainActivity.this,"ImageClicked",Toast.LENGTH_LONG).show();
+        }
+    };
     // https://developer.android.com/guide/components/loaders.html#summary
 
     String[]  mProjection = {

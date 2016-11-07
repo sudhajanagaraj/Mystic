@@ -69,7 +69,7 @@ public class TitleAdapter extends BaseAdapter {
         if (view == null) {
             view = mInflater.inflate(mResId, null);
             holder = new ViewHolder();
-            holder.txtDesc = (TextView) view.findViewById(R.id.text_Desc);
+            holder.txtDesc = (TextView) view.findViewById(R.id.title_text_Desc);
             holder.txtTitle = (TextView) view.findViewById(R.id.text_title);
             holder.imageView = (ImageView) view.findViewById(R.id.title_ProfilePic);
             holder.txtDesc.setOnClickListener(mItemListener);
@@ -94,11 +94,11 @@ public class TitleAdapter extends BaseAdapter {
         public void onClick(View v) {
             IListSelection iList = new QuotesListSelection(mContext,v);
             switch (v.getId()) {
-                case R.id.list_Desc:
-                case R.id.list_Title:
+                case R.id.title_text_Desc:
+                case R.id.text_title:
                     iList.textDescriptionSelected();
                     break;
-                case R.id.list_ProfilePic:
+                case R.id.title_ProfilePic:
                     iList.imgProfileSelected();
                     break;
                 default:
