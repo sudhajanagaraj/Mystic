@@ -68,7 +68,8 @@ public class QuotesListActivity extends AppCompatActivity implements
                     //assigning values
                     String descr = cursor.getString(MysticContent.Quotes.COLUMN_INDEX_QUOTES_DESC);
                     String title = cursor.getString(MysticContent.Quotes.COLUMN_INDEX_QUOTES_TITLE);
-                    ListRowItems item = new ListRowItems(R.drawable.ic_launcher,title,descr);
+                    int id = cursor.getInt(MysticContent.Quotes.COLUMN_INDEX_QUOTES_ID);
+                    ListRowItems item = new ListRowItems(id,R.drawable.ic_launcher,title,descr);
                     rowItems.add(item);
                 } while (cursor.moveToNext());
             }

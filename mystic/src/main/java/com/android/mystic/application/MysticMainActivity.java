@@ -29,6 +29,7 @@ import com.android.mystic.data.MysticConstants;
 import com.android.mystic.provider.DBUtility;
 import com.android.mystic.provider.MysticContent;
 import com.android.mystic.provider.ProviderUtility;
+import com.android.mystic.ui.FavListActivity;
 import com.android.mystic.ui.MastersListActivity;
 import com.android.mystic.ui.QuotesListActivity;
 import com.android.mystic.ui.SettingsActivity;
@@ -47,6 +48,7 @@ public class MysticMainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mystic_navigation);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -69,10 +71,7 @@ public class MysticMainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        DBUtility.insertQuotesTable(this); // Just for inserting records
-
         listView = (ListView) findViewById(R.id.listView_Title);
-
         getLoaderManager().initLoader(MysticConstants.TITLE_LIST_LOADER_ID, null, this);
 
         imgCartoon =  (ImageView)findViewById(R.id.title_CarttoonPic);
@@ -130,6 +129,7 @@ public class MysticMainActivity extends AppCompatActivity
             case R.id.nav_cartoons:
                 break;
             case R.id.nav_favourites:
+                intent.setClass(this, FavListActivity.class);
                 break;
             case R.id.nav_filters:
                 break;
@@ -188,7 +188,8 @@ public class MysticMainActivity extends AppCompatActivity
                     //assing values
                     String descr = cursor.getString(MysticContent.Titles.COLUMN_INDEX_DESC);
                     String title = cursor.getString(MysticContent.Titles.COLUMN_INDEX_TITLE);
-                    ListRowItems item = new ListRowItems(R.drawable.ic_launcher,title,descr);
+                    int id = cursor.getInt(MysticContent.Titles.COLUMN_INDEX_TITLE_ID);
+                    ListRowItems item = new ListRowItems(id,R.drawable.ic_launcher,title,descr);
                     rowItems.add(item);
                 } while (cursor.moveToNext());
             }

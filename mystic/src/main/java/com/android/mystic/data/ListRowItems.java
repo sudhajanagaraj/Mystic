@@ -10,8 +10,10 @@ public class ListRowItems {
     private String mDescription;
     private int mProfilePicId;
     private int mImgFavResId;
+    private int mId;
 
-    public ListRowItems(int mProfilePicId, String mTitle, String mDescription) {
+    public ListRowItems(int id, int mProfilePicId, String mTitle, String mDescription) {
+        this.mId = id;
         this.mProfilePicId = mProfilePicId;
         this.mTitle = mTitle;
         this.mDescription = mDescription;

@@ -9,7 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
 import com.android.mystic.R;
-import com.android.mystic.adapter.MasterListAdapter;
+import com.android.mystic.adapter.QuotesListAdapter;
 import com.android.mystic.data.ListRowItems;
 import com.android.mystic.data.MysticConstants;
 import com.android.mystic.provider.MysticContent;
@@ -18,37 +18,43 @@ import com.android.mystic.provider.ProviderUtility;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MastersListActivity extends AppCompatActivity  implements LoaderManager.LoaderCallbacks {
+public class FavListActivity extends AppCompatActivity implements
+        LoaderManager.LoaderCallbacks{
 
     ListView listView;
     List<ListRowItems> rowItems;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_masters_list);
+        setContentView(R.layout.activity_quotes_list);
 
-        listView = (ListView) findViewById(R.id.listView_Masters);
+        listView = (ListView) findViewById(R.id.listView_Quotes);
 
-        getLoaderManager().initLoader(MysticConstants.MASTERS_LIST_LOADER_ID, null, this);
+        getLoaderManager().initLoader(MysticConstants.QUOTES_LIST_LOADER_ID, null, this);
     }
 
     // https://developer.android.com/guide/components/loaders.html#summary
+
     String[]  mProjection = {
-            MysticContent.Master._ID,
-            MysticContent.Master.COLUMN_NAME_MASTER_NAME,
-            MysticContent.Master.COLUMN_NAME_ABOUT_LIFE
+            MysticContent.Quotes._ID,
+            MysticContent.Quotes.COLUMN_NAME_QUOTES_TITLE,
+            MysticContent.Quotes.COLUMN_NAME_QUOTES_DESC,
+            MysticContent.Quotes.COLUMN_NAME_QUOTES_FAVORITE,
     };
 
     @Override
     public Loader onCreateLoader(int loaderId, Bundle bundle) {
 
-        if(MysticConstants.MASTERS_LIST_LOADER_ID == loaderId) {
+        if(MysticConstants.QUOTES_LIST_LOADER_ID == loaderId) {
 
-            return new CursorLoader(MastersListActivity.this,
-                    ProviderUtility.MASTER_URI,
+            String selection = MysticContent.Quotes.COLUMN_NAME_QUOTES_FAVORITE + "=?";
+            String[] selectionArgs = { String.valueOf(true) };
+
+            return new CursorLoader(FavListActivity.this,
+                    ProviderUtility.QUOTES_URI,
                     mProjection,
-                    null,
-                    null,
+                    selection,
+                    selectionArgs,
                     null) ;
         }
         return null;
@@ -63,10 +69,10 @@ public class MastersListActivity extends AppCompatActivity  implements LoaderMan
             if (cursor != null && cursor.moveToFirst()) {
                 do {
                     //assigning values
-                    String name = cursor.getString(MysticContent.Master.COLUMN_INDEX_MASTER_NAME);
-                    String decr = cursor.getString(MysticContent.Master.COLUMN_INDEX_ABOUT_LIFE);
-                    int id = cursor.getInt(MysticContent.Master.COLUMN_INDEX_MASTER_ID);
-                    ListRowItems item = new ListRowItems(id,R.drawable.ic_launcher,name,decr);
+                    String descr = cursor.getString(MysticContent.Quotes.COLUMN_INDEX_QUOTES_DESC);
+                    String title = cursor.getString(MysticContent.Quotes.COLUMN_INDEX_QUOTES_TITLE);
+                    int id = cursor.getInt(MysticContent.Quotes.COLUMN_INDEX_QUOTES_ID);
+                    ListRowItems item = new ListRowItems(id,R.drawable.ic_launcher,title,descr);
                     rowItems.add(item);
                 } while (cursor.moveToNext());
             }
@@ -78,7 +84,7 @@ public class MastersListActivity extends AppCompatActivity  implements LoaderMan
             }
         }
 
-        MasterListAdapter adapter = new MasterListAdapter(this,R.layout.listview_quotes, rowItems );
+        QuotesListAdapter adapter = new QuotesListAdapter(this,R.layout.listview_quotes, rowItems );
         listView.setAdapter(adapter);
     }
 

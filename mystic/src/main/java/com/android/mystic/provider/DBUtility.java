@@ -9,6 +9,8 @@ import com.android.mystic.log.MysticLog;
 
 import java.util.List;
 
+import static java.lang.Math.random;
+
 /**
  * Created by janagaraj.veluchamy on 7/11/2016.
  */
@@ -50,32 +52,54 @@ public class DBUtility {
             MysticContent.Quotes.COLUMN_NAME_QUOTES_CATEGORY + MysticContent.TEXT_TYPE
             + " )";
 
-    public static void insertMasterTable(Context context) {
-        ContentValues cv = new ContentValues();
-        cv.put(MysticContent.Master.COLUMN_NAME_ABOUT_LIFE, "Void");
-        cv.put(MysticContent.Master.COLUMN_NAME_DISCIPLE, "iam");
-        cv.put(MysticContent.Master.COLUMN_NAME_MASTER_NAME, "youare");
-        cv.put(MysticContent.Master.COLUMN_NAME_MASTER_NAME, "youare");
-        context.getContentResolver().insert(ProviderUtility.MASTER_URI, cv);
+    public static int insertMasterTable(Context context) {
+        int value = 1;
+        if (context == null) {
+            return -1;
+        }
+        String[] names = context.getResources().getStringArray(R.array.master_activity_names);
+        String[] data = context.getResources().getStringArray(R.array.main_activity_desc);
+        try {
+            ContentValues cv = new ContentValues();
+            for (int i = 0; i < names.length; i++) {
+                cv.clear();
+                cv.put(MysticContent.Master.COLUMN_NAME_MASTER_NAME, names[i]);
+                cv.put(MysticContent.Master.COLUMN_NAME_ABOUT_LIFE, data[i]);
+                context.getContentResolver().insert(ProviderUtility.MASTER_URI, cv);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            value = -1;
+        }
+        MysticLog.d("insertMasterTable executed !!");
+        return value;
     }
 
-    public static void insertQuotesTable(Context context) {
-        if(context == null) {
-            return;
+    public static int insertQuotesTable(Context context) {
+        int value = 1;
+        if (context == null) {
+            return -1;
         }
         String[] titles = context.getResources().getStringArray(R.array.main_activity_titles);
         String[] desc = context.getResources().getStringArray(R.array.main_activity_desc);
-
-        for(int i =0; i < titles.length; i++){
+        try {
             ContentValues cv = new ContentValues();
-            cv.put(MysticContent.Quotes.COLUMN_NAME_QUOTES_TITLE, titles[i]);
-            cv.put(MysticContent.Quotes.COLUMN_NAME_QUOTES_DESC, desc[i]);
-            cv.put(MysticContent.Quotes.COLUMN_NAME_QUOTES_MASTER_ID, 1);
-            cv.put(MysticContent.Quotes.COLUMN_NAME_QUOTES_FAVORITE, false);
-            cv.put(MysticContent.Quotes.COLUMN_NAME_QUOTES_SEEN, false);
-            context.getContentResolver().insert(ProviderUtility.QUOTES_URI, cv);
+            for (int i = 0; i < desc.length; i++) {
+                cv.clear();
+                cv.put(MysticContent.Quotes.COLUMN_NAME_QUOTES_TITLE, titles[0]);
+                cv.put(MysticContent.Quotes.COLUMN_NAME_QUOTES_DESC, desc[i]);
+                cv.put(MysticContent.Quotes.COLUMN_NAME_QUOTES_MASTER_ID, 1);
+                cv.put(MysticContent.Quotes.COLUMN_NAME_QUOTES_FAVORITE, false);
+                cv.put(MysticContent.Quotes.COLUMN_NAME_QUOTES_SEEN, false);
+                context.getContentResolver().insert(ProviderUtility.QUOTES_URI, cv);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            value = -1;
+        } finally {
         }
         MysticLog.d("insertQuotesTable executed !!");
+        return value;
     }
 
     public static void insertTitleTable(Context context) {

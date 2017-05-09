@@ -32,7 +32,8 @@ public class MysticProvider extends ContentProvider {
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
-        int rowId = db.delete(MysticContent.TABLE_NAME_MASTER,selection, selectionArgs);
+        String tableName = getTableName(uri);
+        int rowId = db.delete(tableName, selection, selectionArgs);
         MysticLog.d("delete called !!!!");
         return rowId;
     }
@@ -51,18 +52,8 @@ public class MysticProvider extends ContentProvider {
         if(db == null) {
             MysticLog.d("Invalid Db info");
         }
-        String tableName = null;
+        String tableName = getTableName(uri);
         long newRowId = 0;
-        switch(ProviderUtility.getMatchURI(uri)) {
-            case ProviderUtility.TITLE:
-            case ProviderUtility.MASTER:
-            case ProviderUtility.QUOTES:
-                tableName = uri.getLastPathSegment();
-                break;
-            default:
-                MysticLog.d("There are no uri matching !!!");
-                break;
-        }
         try {
             if ((tableName != null) && (values != null) && (values.size() != 0)) {
                 newRowId = db.insert(
@@ -89,18 +80,9 @@ public class MysticProvider extends ContentProvider {
         if(db == null) {
             MysticLog.d("Invalid Db info");
         }
-        String tableName = null;
+        String tableName = getTableName(uri);
         Cursor queryCursor  = null;
-        switch(ProviderUtility.getMatchURI(uri)) {
-            case ProviderUtility.TITLE:
-            case ProviderUtility.MASTER:
-            case ProviderUtility.QUOTES:
-                tableName = uri.getLastPathSegment();
-                break;
-            default:
-                MysticLog.d("[query] There are no uri matching !!!");
-                break;
-        }
+
         try {
             if ((projection != null))
                 MysticLog.d(projection.toString());
@@ -130,15 +112,41 @@ public class MysticProvider extends ContentProvider {
     @Override
     public int update(Uri uri, ContentValues values, String selection,
                       String[] selectionArgs) {
-        SQLiteDatabase db = mDbHelper.getReadableDatabase();
-        int count = db.update(
-                MysticContent.TABLE_NAME_MASTER,
-                values,
-                selection,
-                selectionArgs);
-
+        SQLiteDatabase db = mDbHelper.getWritableDatabase();
+        String tableName = getTableName(uri);
+        int count = 0;
         MysticLog.d("update called !!!!");
 
+        try {
+            if ((tableName != null) && (values != null) && (values.size() != 0)) {
+                count = db.update(
+                        tableName,
+                        values,
+                        selection,
+                        selectionArgs);
+            }
+        } catch (SQLiteException sqle) {
+            sqle.printStackTrace();
+        } finally {
+            MysticLog.d("Updated Id :" + count);
+            if(db != null) {
+                db.close();
+            }
+        }
         return count;
+    }
+
+    private String getTableName(Uri uri) {
+        String tableName = null;
+        switch(ProviderUtility.getMatchURI(uri)) {
+            case ProviderUtility.TITLE:
+            case ProviderUtility.MASTER:
+            case ProviderUtility.QUOTES:
+                tableName =  uri.getLastPathSegment();
+            default:
+                MysticLog.d("There are no uri matching !!!");
+                break;
+        }
+        return tableName;
     }
 }

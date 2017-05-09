@@ -99,7 +99,7 @@ public class QuotesListAdapter extends BaseAdapter {
     // Create an anonymous implementation of OnClickListener
     private View.OnClickListener mItemListener = new View.OnClickListener() {
         public void onClick(View v) {
-            IListSelection iList = new QuotesListSelection(mContext,v);
+            IListSelection iList = new QuotesListSelection(mContext,0,v);
             switch (v.getId()) {
                 case R.id.list_Desc:
                 case R.id.list_Title:

@@ -25,6 +25,8 @@ public class MysticApp extends Application {
         MysticLog.i("OnCreate Called !!!!");
         //Build up Title table with initial values
         DBUtility.insertTitleTable(this);
+        // Just for inserting records
+        DBUtility.insertQuotesTable(this);
 
     }
     public static Context getContext() {
